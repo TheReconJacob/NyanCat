@@ -12,10 +12,8 @@ gem "activerecord", "~> 5.2"
 
 gem "sinatra-activerecord", "~> 2.0"
 
-gem "sqlite3", "~> 1.4"
+gem 'pg'
 
 gem "rake", "~> 12.3"
-
-gem "pg", "~> 1.1"
 
 gem "pry", "~> 0.12.2"
