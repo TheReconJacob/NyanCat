@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#nyancat {
+    width: 300px;
+    position: relative;
+    top: 10px;
+    animation-name: nyan;
+    animation-duration: 30s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes nyan {
+    0% {left: -400px;}
+    100% {left: 1800px;}
+}
+
+body {
+  
+    background-image: url("https://steamuserimages-a.akamaihd.net/ugc/965347254966564699/506E9427BBC28841D6F3EFDA5699C7A0D338FCC7/");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+</style>
+<img id="nyancat" src="https://s2.wp.com/wp-content/themes/a8c/automattic-2011/page-templates/assets/2016-annual-report/images/cat5.gif"><br>
+<img style="display: block; margin-left: auto; margin-right: auto; width: 70%; height: 50%;" src="https://i.ibb.co/v1Qqgsn/OT7tjYvC.gif" width="1038" height="91" alt="NYAN CAT MEME SHARER!!!!!!!" /></a>
+<h2 style="display: block; margin-left: auto; margin-right: auto; width: 70%; height: 50%; text-align: center;">Hi, welcome to the Nyan Cat Meme Sharer!!!!!! Please only post nyan cat memes or I ban you.</h2>
+<script type="text/javascript">
+</script>
+<link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+<meta charset=utf-8 />
+</head>
+
+<iframe src="https://www.albinoblacksheep.com/audio/mp3/Nyanyanyanyanyanyanya.mp3" allow="autoplay" style="display:none" id="iframeAudio">
+</iframe>
+<audio autoplay loop  id="playAudio">
+    <source src="https://www.albinoblacksheep.com/audio/mp3/Nyanyanyanyanyanyanya.mp3">
+<script>
+var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+    if(!isChrome){
+      $('#iframeAudio').remove()
+    }
+  else{
+     $('#playAudio').remove() //just to make sure that it will not have 2x audio in the background 
+  }
+</script>
+</audio>
+
+<body>
+<br>
+<form enctype="multipart/form-data" style="background-color: white; width: 1250px; display: block; margin-left: auto; margin-right: auto;" action="/posts" method="POST">
+<br>
+<textarea style="width:1000px; display: block; margin-left: auto; margin-right: auto; text-align:center;" name="title" placeholder="title"></textarea><br>
+<textarea style="width:1000px; display: block; margin-left: auto; margin-right: auto; text-align:center;" name="body" placeholder="body"></textarea><br>
+
+<input style="width:1000px; display: block; margin-left: auto; margin-right: auto; text-align:center;" type='file' accept="image/gif,image/jpeg,image/png" name="file"/>
+<br>
+<button style="width:1000px; display: block; margin-left: auto; margin-right: auto;" type="submit">Submit</button>
+<br>
+</form>
+<style>
+.post-article
+{
+background-color: white;
+width: 1000px;
+display: block;
+margin-left:auto;
+margin-right: auto;
+text-align:center;
+}
+</style>
+<%posts.each do |post|%>
+    <article class="post-article">
+    <h1><%=post.title%></h1>
+    <p><%=post.body%></p>
+    <img src="/<%=post.image %>" style="width: 250px;"/><br>
+    <a type="button" href="/posts/<%=post.id%>/delete">Delete Post</a>
+    <h4>Comments:</h4>
+    <%post.comments.each do |comment|%>
+    <article class="comment-article" style="background-color: pink; width: 200px; border-radius: 0px 20px; display: block; margin-left: auto; margin-right: auto; text-align:center;">
+    <%=comment.content%>
+    </article><br>
+    <%end%>
+<!-- /posts/<%=post.id%>/comments-->
+<form action="/posts/<%=post.id%>/comments" method="POST">
+<input name="comment"></input>
+<button type="submit">Submit</button>
+</form>
+    </article>
+<%end%>
+</body>
+<script>
+if ( window.history.replaceState ) {
+  window.history.replaceState( null, null, window.location.href );
+}
+</script>
+</html>
