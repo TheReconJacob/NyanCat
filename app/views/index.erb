@@ -56,8 +56,8 @@ var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator
 <br>
 <textarea style="width:1000px; display: block; margin-left: auto; margin-right: auto; text-align:center;" name="title" placeholder="title"></textarea><br>
 <textarea style="width:1000px; display: block; margin-left: auto; margin-right: auto; text-align:center;" name="body" placeholder="body"></textarea><br>
-
-<input style="width:1000px; display: block; margin-left: auto; margin-right: auto; text-align:center;" type='file' accept="image/gif,image/jpeg,image/png" name="file"/>
+<br>
+<textarea style="width:1000px; display: block; margin-left: auto; margin-right: auto; text-align:center;" name="image" placeholder="image url"></textarea>
 <br>
 <button style="width:1000px; display: block; margin-left: auto; margin-right: auto;" type="submit">Submit</button>
 <br>
@@ -77,7 +77,7 @@ text-align:center;
     <article class="post-article">
     <h1><%=post.title%></h1>
     <p><%=post.body%></p>
-    <img src="/<%=post.image %>" style="width: 250px;"/><br>
+    <img src="<%=post.image%>" style="width: 250px;"/><br>
     <a type="button" href="/posts/<%=post.id%>/delete">Delete Post</a>
     <h4>Comments:</h4>
     <%post.comments.each do |comment|%>

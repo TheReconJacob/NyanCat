@@ -14,13 +14,9 @@ class Server < Sinatra::Base
     post "/posts" do
         body = params["body"]
         title = params["title"]
-        @filename = params[:file][:filename]
-        image = params[:file][:tempfile]
-        File.open("./public/#{@filename}", 'wb') do |f|
-            f.write(image.read)
-        end
+        image = params["image"]
         date = Time.now.to_s
-        Post.create(body: body, title: title, image: @filename, date: date)
+        Post.create(body: body, title: title, image: image, date: date)
         erb :index, locals: {posts: Post.all}
     end
     post "/posts/:post_id/comments" do |post_id|
